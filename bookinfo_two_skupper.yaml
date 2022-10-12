@@ -1,0 +1,22 @@
+---
+#####################################################################################################
+# Skupper resources
+#####################################################################################################
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: ratings
+spec:
+  ports:
+  - port: 9080
+    name: http
+---
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: reviews
+spec:
+  ports:
+  - port: 9080
+    name: http
+---

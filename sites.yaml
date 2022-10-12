@@ -1,0 +1,28 @@
+---
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: one
+  annotations:
+    skupper.io/sync-target: grs/foo
+  labels:
+    skupper.io/syncer: skupper-1
+---
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: two
+  annotations:
+    skupper.io/sync-target: grs/bar
+  labels:
+    skupper.io/syncer: skupper-2
+---
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: three
+  annotations:
+    skupper.io/sync-target: default/baz
+  labels:
+    skupper.io/syncer: private-1
+---

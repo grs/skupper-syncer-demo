@@ -1,0 +1,66 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/instance: skupper-syncer
+    app.kubernetes.io/name: skupper-syncer
+  name: skupper-syncer
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - delete
+- apiGroups:
+  - skupper.io
+  resources:
+  - sites
+  - sites/status
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - delete
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    app.kubernetes.io/instance: skupper-syncer
+    app.kubernetes.io/name: skupper-syncer
+  name: skupper-syncer
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: skupper-syncer
+  namespace: skupper-syncer
+  labels:
+    app.kubernetes.io/instance: skupper-syncer
+    app.kubernetes.io/name: skupper-syncer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: skupper-syncer
+    app.kubernetes.io/name: skupper-syncer
+  name: skupper-syncer
+subjects:
+- kind: ServiceAccount
+  name: skupper-syncer
+  namespace: skupper-syncer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: skupper-syncer
+---

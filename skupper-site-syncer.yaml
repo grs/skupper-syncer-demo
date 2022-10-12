@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skupper-syncer
+  namespace: skupper-syncer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: skupper-syncer
+  template:
+    metadata:
+      labels:
+        application: skupper-syncer
+    spec:
+      serviceAccountName: skupper-syncer
+      containers:
+      - name: site-controller
+        image: quay.io/gordons/site-syncer:syncer-demo
