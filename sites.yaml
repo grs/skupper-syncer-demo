@@ -6,7 +6,7 @@ metadata:
   annotations:
     skupper.io/sync-target: grs/foo
   labels:
-    skupper.io/syncer: skupper-1
+    skupper.io/syncer: public-1
 ---
 apiVersion: skupper.io/v1alpha1
 kind: Site
@@ -15,7 +15,7 @@ metadata:
   annotations:
     skupper.io/sync-target: grs/bar
   labels:
-    skupper.io/syncer: skupper-2
+    skupper.io/syncer: public-2
 ---
 apiVersion: skupper.io/v1alpha1
 kind: Site
